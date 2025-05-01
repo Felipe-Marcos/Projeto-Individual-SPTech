@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Mini Trello</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+
+        .board {
+            display: flex;
+            gap: 20px;
+        }
+
+        .column {
+            background: #e0e4e7;
+            padding: 10px;
+            width: 250px;
+            border-radius: 8px;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .column h2 {
+            font-size: 18px;
+        }
+
+        .task-list {
+            flex-grow: 1;
+            margin-bottom: 10px;
+        }
+
+        .card {
+            background: white;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: grab;
+        }
+
+        .card.dragging {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Mini Trello</h1>
+    <div class="board">
+        <div class="column" id="todo">
+            <h2>A Fazer</h2>
+            <div id="todo-tasks" class="task-list"></div>
+            <button onclick="addTask('todo')">ADD</button>
+        </div>
+        <div class="column" id="doing">
+            <h2>Em Andamento</h2>
+            <div id="doing-tasks" class="task-list">
+            </div>
+            <button onclick="addTask('doing')">ADD</button>
+        </div>
+        <div class="column" id="done">
+            <h2>Concluído</h2>
+            <div id="done-tasks" class="task-list"></div>
+            <button onclick="addTask('done')">ADD</button>
+        </div>
+    </div>
+
+    <script>
+        // function allowDrop(ev) {
+        //     ev.preventDefault();
+        // }
+
+        // function drag(ev) {
+        //     ev.dataTransfer.setData("text", ev.target.id);
+        // }
+
+        // function drop(ev) {
+        //     ev.preventDefault();
+        //     const data = ev.dataTransfer.getData("text");
+        //     const card = document.getElementById(data);
+        //     ev.target.closest(".column").appendChild(card);
+        // }
+
+        function addTask(columnId) {
+            const taskText = prompt("Digite o nome da tarefa:");
+            if (taskText) {
+                const task = document.createElement("div");
+                task.className = "card";
+                task.draggable = true;
+
+                const text = document.createElement("span");
+                text.textContent = taskText;
+
+                const checkButton = document.createElement("button");
+                checkButton.innerHTML = "✅";
+                checkButton.className = "check-btn";
+                checkButton.addEventListener("click", () => {
+                    task.classList.toggle("completed");
+                });
+
+                const deleteButton = document.createElement("button");
+                deleteButton.innerHTML = "🗑️";
+                deleteButton.className = "delete-btn";
+                deleteButton.addEventListener("click", () => {
+                    if (confirm("Tem certeza que deseja excluir esta tarefa?")) {
+                        task.remove();
+                    }
+                });
+
+                const buttonGroup = document.createElement("div");
+                buttonGroup.appendChild(checkButton);
+                buttonGroup.appendChild(deleteButton);
+
+                task.appendChild(text);
+                task.appendChild(buttonGroup);
+
+                task.addEventListener("dragstart", dragStart);
+
+                document.getElementById(columnId + "-tasks").appendChild(task);
+            }
+        }
+
+        function dragStart(event) {
+            event.dataTransfer.setData("text/plain", event.target.outerHTML);
+            event.dataTransfer.setData("sourceId", event.target.parentElement.id);
+            // setTimeout(() => {
+            //     event.target.style.display = "none"; // Esconde enquanto arrasta
+            // }, 0);
+        }
+
+        document.querySelectorAll(".task-list").forEach(list => {
+            list.addEventListener("dragover", event => {
+                event.preventDefault();
+            });
+
+            list.addEventListener("drop", event => {
+                event.preventDefault();
+                const taskHTML = event.dataTransfer.getData("text/plain");
+                const sourceId = event.dataTransfer.getData("sourceId");
+
+                const temp = document.createElement("div");
+                temp.innerHTML = taskHTML;
+                const task = temp.firstElementChild;
+
+                task.style.display = "flex";
+                task.addEventListener("dragstart", dragStart);
+
+                // Adiciona eventos novamente aos botões
+                task.querySelector(".check-btn").addEventListener("click", () => {
+                    task.classList.toggle("completed");
+                });
+                task.querySelector(".delete-btn").addEventListener("click", () => {
+                    if (confirm("Tem certeza que deseja excluir esta tarefa?")) {
+                        task.remove();
+                    }
+                });
+
+                // Remove a tarefa da lista antiga
+                const sourceList = document.getElementById(sourceId);
+                const tasks = sourceList.querySelectorAll(".task");
+                tasks.forEach(t => {
+                    if (t.textContent === task.textContent) {
+                        t.remove();
+                    }
+                });
+
+                event.currentTarget.appendChild(task);
+            });
+        });
+    </script>
+</body>
+
+</html>

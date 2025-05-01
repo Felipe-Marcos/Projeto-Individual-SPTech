@@ -2,6 +2,50 @@
     margin: 0;
     padding: 0;
 }
+/* Home */
+.bodyHome {
+background-color: #E8EDF3;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    padding: 5px 10px;
+    background-color: #4B4B4B;
+  }
+  .logo {
+    margin-left: 30px;
+    width: 90px;
+    height: 90px;
+  }
+    .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 100vw;
+        list-style: none;
+    }
+    .nav-links a {
+        color: #DAA520;
+        text-decoration: none;
+        padding: 80px 20px;
+        font-size: 23px;
+    }
+    .nav-links a:hover {
+        color: #daa520b4;
+        transition: 0.3s;
+    }
+    .nav-links i {
+        color: #fff;
+        font-size: 30px;
+    }
+    .nav-links i:hover {
+        color: #daa520c5;
+        transition: 0.3s;
+    }
+
 
 /* Cadastro */
 .bodyCadastro {
