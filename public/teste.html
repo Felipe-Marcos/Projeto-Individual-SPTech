@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mini Trello</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f0f2f5;
+      padding: 20px;
+    }
+    .board {
+      display: flex;
+      gap: 20px;
+    }
+    .column {
+      background: #e0e4e7;
+      padding: 10px;
+      width: 250px;
+      border-radius: 8px;
+    }
+    .column h2 {
+      font-size: 18px;
+    }
+    .card {
+      background: white;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: grab;
+    }
+    .card.dragging {
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mini Trello</h1>
+  <div class="board">
+    <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <h2>A Fazer</h2>
+      <div class="card" draggable="true" ondragstart="drag(event)" id="card1">Estudar CSS</div>
+      <div class="card" draggable="true" ondragstart="drag(event)" id="card2">Criar login</div>
+    </div>
+    <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <h2>Em Andamento</h2>
+    </div>
+    <div class="column" ondrop="drop(event)" ondragover="allowDrop(event)">
+      <h2>Concluído</h2>
+    </div>
+  </div>
+
+  <script>
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      const data = ev.dataTransfer.getData("text");
+      const card = document.getElementById(data);
+      ev.target.closest(".column").appendChild(card);
+    }
+  </script>
+</body>
+</html>

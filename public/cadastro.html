@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="assets/icon/favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Cadastro</title>
+</head>
+
+<body class="bodyCadastro">
+  <div class="containerCadastro">
+    <h1>Cadastro</h1>
+    <div class="input-root-container">
+      <div class="input-container">
+        <i class="fas fa-user" id="icon"></i>
+        <input type="text" id="input_nome" placeholder="Nome" />
+      </div>
+      <div class="input-container">
+        <i class="fas fa-envelope" id="icon"></i>
+        <input type="email" id="input_email" placeholder="Email" />
+      </div>
+      <div class="input-container">
+        <i class="fas fa-lock" id="icon"></i>
+        <input type="password" id="input_senha" placeholder="Senha" />
+      </div>
+      <div class="input-container">
+        <i class="fas fa-lock" id="icon"></i>
+        <input type="password" id="input_confirmarSenha" placeholder="Confirmar Senha" />
+      </div>
+    </div>
+    <div class="cadastrar">
+      <button onclick="cadastrar()">Cadastrar</button>
+    </div>
+    <div class="linkConta">Já tem uma conta? <a href="login.html"> Entrar </a></div>
+  </div>
+</body>
+
+</html>
