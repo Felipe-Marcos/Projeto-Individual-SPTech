@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="assets/icon/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bodyHistoria">
+    <div class="main-container">
+        <header>
+            <nav class="navbar">
+                <img src="assets/icon/logo_sem_fundo.png" alt="Logo" class="logo" />
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="metas.html">Metas</a></li>
+                    <li><a href="historia.html">História</a></li>
+                    <li><a href="login.html"><i class="fa-solid fa-circle-user"></i></a></li>
+                </ul>
+            </nav>
+        </header>
+    
+        <main>
+            <section class="historia-section">
+                <select name="instrumento" id="instrumento">
+                    <option value="#">Selecione um instrumento</option>
+                    <option value="violao">Violão</option>
+                    <option value="viola-classica">Viola Clássica</option>
+                    <option value="violino">Violino</option>
+                    <option value="viola-caipira">Viola Caipira</option>
+                </select>
+    
+                <br><br>
+    
+                <button onclick="historia()">Ver História</button>
+    
+                <br><br>
+    
+                <div id="div_historia">
+                </div>
+            </section>
+        </main>
+    </div>
+    
+
+    <footer>
+        <div class="footer-content-historia">
+          <img src="assets/icon/logo_sem_fundo.png" alt="">
+          <div class="footer-texto">
+            <label>© 2025 FeMusic Todos os direitos reservados. Desenvolvido por Felipe Marcos Bastos Pena</label>
+          </div>
+        </div>
+      </footer>
+
+</body>
+</html>
+
+<script>
+    function historia() {
+        var viola = `<img src="assets/imgs/hist-viola.svg" alt="">`;
+        var violao = `<img src="assets/imgs/violão-improvsado.svg" alt="">`;
+        var violino = `<img src="assets/imgs/violino16.svg" alt="">`;
+        var violaCaipira = `<img src="assets/imgs/viola-caipira.svg" alt="">`;
+        var mensagem = ``;
+
+        if (instrumento.value == 'violao') {
+            mensagem = `
+            <h1>A História do Violão</h1> 
+            <br><br>
+            ${violao} <br><br>
+            O violão é um instrumento de cordas dedilhadas que possui uma longa trajetória histórica e cultural. 
+            Sua origem remonta a milhares de anos, com influências de diversos instrumentos antigos.
+            Com o tempo, ele se consolidou como um dos instrumentos musicais mais populares e versáteis do mundo.
+            <br><br>
+            <h2>Origens Antigas</h2>
+            <br><br>
+            Os primeiros registros de instrumentos semelhantes ao violão datam da Antiguidade, em civilizações como a egípcia, a grega e a romana.
+             Nessas culturas, instrumentos como a lira e a cítara eram comuns. 
+            o entanto, o instrumento que mais se assemelha ao violão moderno é o alaúde, introduzido na Europa pelos mouros durante a ocupação da Península Ibérica, entre os séculos VIII e XV.
+            <br><br>
+            <h2>A Vihuela e o Século XVI</h2>
+            <br><br>
+            Na Espanha do século XVI, surgiu a vihuela, um instrumento de cordas que apresentava afinamento semelhante ao do violão atual.
+             A vihuela foi bastante usada na música renascentista e é considerada um dos principais predecessores do violão.
+             Nessa época, ainda não havia um padrão único de construção, o que resultava em instrumentos variados em forma e número de cordas.
+            <br><br>
+            <h2>O Violão Moderno </h2>
+            <br><br>
+            O formato moderno do violão começou a se consolidar no século XIX. O espanhol Antonio Torres Jurado (1817–1892) foi o luthier responsável por importantes inovações no design do instrumento.
+             Ele aumentou o tamanho do corpo do violão, aperfeiçoou sua acústica e estabeleceu padrões de construção que permanecem até hoje.
+            A partir de suas modificações, o violão ganhou mais projeção sonora e passou a ser utilizado com maior frequência na música clássica.
+            <br><br>
+            <h2>Popularização no Século XX</h2>
+            <br><br>
+            Durante o século XX, o violão se popularizou em diversos estilos musicais ao redor do mundo, como o choro, a bossa nova e o samba no Brasil; o flamenco na Espanha; o folk e o blues nos Estados Unidos; e o fado em Portugal.
+             A invenção do violão elétrico também contribuiu para sua presença em gêneros como o rock, o pop e o jazz.
+            <br><br>
+            Hoje, o violão é um dos instrumentos mais tocados globalmente, seja de forma amadora ou profissional.
+            Sua acessibilidade, portabilidade e expressividade musical o tornam uma peça central da cultura musical de muitos países.
+            <br><br>
+            `;
+        } else if (instrumento.value == 'viola-classica') {
+            mensagem = `
+            <h1>A História da Viola Clássica</h1>
+            <br><br>
+            ${viola} <br><br>
+            A viola clássica é um instrumento de cordas friccionadas muito utilizado na música erudita, fazendo parte do quarteto de cordas tradicional ao lado do violino, violoncelo e contrabaixo. 
+            Embora muitas vezes confundida com o violino por seu formato semelhante, a viola tem um som mais grave e um papel harmônico fundamental nas composições clássicas.
+            <br><br>
+            <h2>Origens Históricas</h2>
+            <br><br>
+            A viola clássica, também chamada de viola de arco, surgiu na Europa durante o período renascentista. 
+            Derivada da família das violas da gamba, a versão moderna passou a fazer parte da orquestra sinfônica no século XVII, ganhando forma padronizada ao longo do tempo.
+            <br><br>
+            <h2>Diferenciação do Violino</h2>
+            <br><br>
+            Apesar de similar ao violino, a viola clássica é ligeiramente maior e possui afinação diferente: suas cordas são afinadas em dó, sol, ré e lá (de grave para agudo). 
+            Seu timbre encorpado a torna essencial para preencher o meio da textura sonora nas composições orquestrais.
+            <br><br>
+            <h2>Papel na Música de Câmara</h2>
+            <br><br>
+            Na música de câmara, especialmente em quartetos de cordas, a viola desempenha uma função intermediária entre o violino e o violoncelo. 
+            Com um repertório que vai de Bach a compositores contemporâneos, a viola é valorizada por sua profundidade sonora e capacidade expressiva.
+            <br><br>
+            <h2>Reconhecimento Moderno</h2>
+            <br><br>
+            Apesar de historicamente menos valorizada que o violino, a viola ganhou mais destaque a partir do século XX com obras compostas especialmente para ela. 
+            Grandes músicos como Lionel Tertis e William Primrose ajudaram a elevar seu prestígio, e hoje há concursos e festivais dedicados exclusivamente à viola clássica.
+            <br><br>
+            `;
+        } else if (instrumento.value == 'violino') {
+            mensagem = `
+            <h1>A História do Violino</h1>
+            <br><br>
+            ${violino} <br><br>
+            O violino é um dos instrumentos mais antigos e influentes da música ocidental, sendo essencial na música clássica, folclórica e até popular. 
+            Sua expressividade sonora e agilidade técnica o tornaram um símbolo de virtuosismo e emoção.
+            <br><br>
+            <h2>Origem no Século XVI</h2>
+            <br><br>
+            O violino surgiu no norte da Itália por volta do século XVI, a partir de instrumentos como a rabeca e a lira da braccio. 
+            Os primeiros modelos modernos foram desenvolvidos por luthiers como Andrea Amati, Gasparo da Salò e, mais tarde, Antonio Stradivari.
+            <br><br>
+            <h2>Período Barroco e Clássico</h2>
+            <br><br>
+            Durante o período barroco, o violino se consolidou como instrumento solista. 
+            Compositores como Vivaldi, Bach e Corelli exploraram suas capacidades técnicas e expressivas. 
+            Já no período clássico, Mozart e Beethoven ampliaram ainda mais seu uso nas orquestras e na música de câmara.
+            <br><br>
+            <h2>Virtuosismo Romântico</h2>
+            <br><br>
+            No século XIX, o violino foi o protagonista de grandes concertos e peças técnicas. 
+            Virtuoses como Paganini elevaram o nível de execução e influenciaram gerações. 
+            O violino se tornou um símbolo de romantismo, técnica refinada e expressão individual.
+            <br><br>
+            <h2>Presença Global</h2>
+            <br><br>
+            Hoje, o violino é tocado em estilos variados — do clássico ao jazz, do country ao rock, do klezmer à música indiana. 
+            É um dos instrumentos mais estudados em conservatórios e sua versatilidade o torna uma peça-chave na cultura musical mundial.
+            <br><br>`;
+            } else if (instrumento.value == 'viola-caipira') {
+            mensagem = `
+            <h1>A História da Viola Caipira</h1>
+            <br><br>
+            ${violaCaipira} <br><br>
+            A viola caipira é um dos instrumentos mais emblemáticos da música tradicional brasileira, especialmente associada à cultura rural e à música sertaneja de raiz. 
+            Com suas 10 cordas dispostas em 5 pares, ela produz um som característico, doce e cheio de harmônicos.
+            <br><br>
+            <h2>Raízes Ibéricas</h2>
+            <br><br>
+            A origem da viola caipira remonta às violas trazidas pelos colonizadores portugueses durante o período colonial. 
+            Esses instrumentos eram comuns na Península Ibérica e foram adaptados no Brasil às tradições locais e às influências indígenas e africanas.
+            <br><br>
+            <h2>Popularização no Interior</h2>
+            <br><br>
+            Ao longo dos séculos XVIII e XIX, a viola se espalhou pelo interior do Brasil, especialmente em estados como Minas Gerais, Goiás, São Paulo e Mato Grosso. 
+            Ela tornou-se um símbolo da música sertaneja, sendo utilizada em folias de reis, catiras, modas de viola e desafios musicais.
+            <br><br>
+            <h2>Características e Estilos</h2>
+            <br><br>
+            A viola caipira possui afinações variadas, conhecidas como "afinações abertas", como a cebolão, a rio abaixo e a natural. 
+            Essas afinações permitem ricas variações melódicas e harmônicas. 
+            É um instrumento solo e de acompanhamento, muitas vezes tocado com dedilhado preciso e ritmado.
+            <br><br>
+            <h2>Renascimento e Valorização</h2>
+            <br><br>
+            A partir dos anos 1980, a viola caipira passou a ser valorizada também por músicos da música popular e erudita, ganhando espaço em gravações, festivais e universidades. 
+            Artistas como Almir Sater, Renato Teixeira e Ivan Vilela contribuíram para o reconhecimento nacional e internacional da viola caipira como patrimônio cultural brasileiro.
+            <br><br>`;
+        }
+
+        div_historia.innerHTML = mensagem;
+    }
+</script>

@@ -302,6 +302,7 @@
 }
 
 .footer-content {
+    position: relative;
     background-color: #4B4B4B;
     display: flex;
     align-items: center;
@@ -325,6 +326,103 @@
     color: #DAA520;
     font-size: 1rem;
 }
+/* historia footer */
+.footer-content-historia {
+    position: relative;
+    background-color: #4B4B4B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 27.9rem;
+    padding: 10px 0;
+    
+}
+
+.footer-content-historia img {
+    width: 90px;
+    height: 90px;
+    margin-right: 20px;
+}
+
+/* Estilo do body */
+body.bodyHistoria {
+    background-color: #E8EDF3;
+}
+/* Seção principal */
+.historia-section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 100px 0 0 400px;
+    max-width: 1000px;    
+    align-items: center;
+    padding: 2rem;
+    background-color: #4B4B4B;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.historia-section select{
+    text-align: center;
+    margin: 0 auto;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 7px;
+    border: 1px solid #DAA520;
+    cursor: pointer;
+}
+.historia-section button {
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.historia-section button {
+    background-color: #DAA520;
+    color: white;
+    border: none;       
+    transition: background-color 0.3s;
+}
+
+.historia-section button:hover {
+    background-color: #daa520d5;
+}
+
+#div_historia img {
+    max-width: 100%;
+    height: auto;
+     margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#div_historia h1 {
+    font-size: 40px;
+    color: #DAA520;
+    margin-bottom: 16px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#div_historia h2 {
+    font-size: 1.5rem;
+    color: #DAA520;
+    margin-top: 1.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#div_historia {
+    font-size: 1.5rem;
+    text-align: justify;
+    color: #ffffff;
+    text-align: center;
+    max-width: 600px;
+}
+
+
+
 /* Cadastro */
 .bodyCadastro {
     background-image: url(/public/assets/imgs/1\ de\ mai.\ de\ 2025\,\ 14_21_07\ 1.svg);
