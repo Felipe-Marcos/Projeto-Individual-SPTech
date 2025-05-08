@@ -48,57 +48,61 @@
         <button onclick="calcular()">Calcular Tempo</button>
         <br><br>
         <div id="div_exibir"></div>
-    <footer>
-        <div class="footer-content">
-          <img src="assets/icon/logo_sem_fundo.png" alt="">
-          <div class="footer-texto">
-            <label>© 2025 FeMusic Todos os direitos reservados. Desenvolvido por Felipe Marcos Bastos Pena</label>
-          </div>
-        </div>
-      </footer>
+        <footer>
+            <div class="footer-content">
+                <img src="assets/icon/logo_sem_fundo.png" alt="">
+                <div class="footer-texto">
+                    <label>© 2025 FeMusic Todos os direitos reservados. Desenvolvido por Felipe Marcos Bastos
+                        Pena</label>
+                </div>
+            </div>
+        </footer>
 
 </body>
+
 </html>
 
 
 <script>
-function calcular() {
-    let nome = document.getElementById("input_nome").value;
-    let dificuldade = document.getElementById("select_dificuldade").value;
-    let tempoPorDia = document.getElementById("input_tempo").value;
-    let instrumento = document.getElementById("select_instrumento").value;
-    let resultado = document.getElementById("div_exibir");
+    function calcular() {
+        var nome = input_nome.value;
+        var dificuldade = select_dificuldade.value;
+        var tempoPorDia = Number(input_tempo.value);
+        var instrumento = select_instrumento.value;
+        var mensagem = "";
 
-    let tempos = [3, 10, 30]; // horas médias: fácil, médio, difícil
-    let tempoEmHoras = tempoPorDia / 60;
-    let totalHoras = 0;
+        var tempos = [3, 10, 30]; // horas médias: fácil, médio, difícil
+        var tempoEmHoras = tempoPorDia / 60;
+        var totalHoras = 0;
+        var dias = 0;
 
-    if (dificuldade == "facil") {
-        totalHoras = tempos[0];
-    } else {
-        if (dificuldade == "medio") {
-            totalHoras = tempos[1];
+        if (tempoEmHoras <= 0) {
+            mensagem = `Por favor, insira um tempo diário válido maior que zero.`;
         } else {
-            totalHoras = tempos[2];
+            if (dificuldade == "facil") {
+                totalHoras = tempos[0];
+            } else if (dificuldade == "medio") {
+                totalHoras = tempos[1];
+            } else {
+                totalHoras = tempos[2];
+            }
+
+            dias = totalHoras / tempoEmHoras;
+
+            if (tempoEmHoras < 60) {
+                mensagem = `Se você estudar ${tempoPorDia} minutos por dia, você aprenderá a música "${nome}" em aproximadamente ${dias} dias.`;
+            } else {
+                mensagem = `Se você estudar ${tempoEmHoras.toFixed(0)} minutos por dia, você aprenderá a música "${nome}" em aproximadamente ${dias} dias.`;
+            }
+
+            
         }
+
+        div_exibir.innerHTML = `
+            <b>Música:</b> ${nome}<br>
+            <b>Instrumento:</b> ${instrumento}<br>
+            <b>Dificuldade:</b> ${dificuldade}<br><br>
+            <b>Resultado:</b> ${mensagem}
+        `;
     }
-
-    let dias = 0;
-    let horasEstudadas = 0;
-
-    for (let i = 0; i < 1000; i++) { // limite de segurança
-        horasEstudadas = horasEstudadas + tempoEmHoras;
-        dias = dias + 1;
-        if (horasEstudadas >= totalHoras) {
-            i = 1000; // parar o loop
-        }
-    }
-
-    resultado.innerHTML = "<b>Música:</b> " + nome + "<br>" +
-                          "<b>Instrumento:</b> " + instrumento + "<br>" +
-                          "<b>Dificuldade:</b> " + dificuldade + "<br>" +
-                          "<b>Você levará cerca de:</b> " + dias + " dias para aprender.";
-}
-
-    </script>
-    
+</script>
