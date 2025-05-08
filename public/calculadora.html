@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="assets/icon/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bodyHistoria">
+    <div class="main-container">
+        <header>
+            <nav class="navbar">
+                <img src="assets/icon/logo_sem_fundo.png" alt="Logo" class="logo" />
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="metas.html">Metas</a></li>
+                    <li><a href="historia.html">História</a></li>
+                    <li><a href="calculadora.html">Calculadora</a></li>
+                    <li><a href="login.html"><i class="fa-solid fa-circle-user"></i></a></li>
+                </ul>
+            </nav>
+        </header>
+        Insira o nome da Música que você está aprendendo:
+        <input type="text" id="input_nome">
+        <br><br>
+        Insira o instrumento que você está aprendendo:
+        <select id="select_instrumento">
+            <option value="violao">Violão</option>
+            <option value="viola-classica">Viola Clássica</option>
+            <option value="violino">Violino</option>
+            <option value="viola-caipira">Viola Caipira</option>
+        </select>
+        <br><br>
+        Insira o seu nível de dificuldade
+        <select id="select_dificuldade">
+            <option value="facil">Fácil</option>
+            <option value="medio">Médio</option>
+            <option value="dificil">Difícil</option>
+        </select>
+        <br><br>
+        Insira o tempo que você tem disponível por dia em minutos
+        <input type="text" id="input_tempo">
+        <br><br>
+        <button onclick="calcular()">Calcular Tempo</button>
+        <br><br>
+        <div id="div_exibir"></div>
+    <footer>
+        <div class="footer-content">
+          <img src="assets/icon/logo_sem_fundo.png" alt="">
+          <div class="footer-texto">
+            <label>© 2025 FeMusic Todos os direitos reservados. Desenvolvido por Felipe Marcos Bastos Pena</label>
+          </div>
+        </div>
+      </footer>
+
+</body>
+</html>
+
+
+<script>
+function calcular() {
+    let nome = document.getElementById("input_nome").value;
+    let dificuldade = document.getElementById("select_dificuldade").value;
+    let tempoPorDia = document.getElementById("input_tempo").value;
+    let instrumento = document.getElementById("select_instrumento").value;
+    let resultado = document.getElementById("div_exibir");
+
+    let tempos = [3, 10, 30]; // horas médias: fácil, médio, difícil
+    let tempoEmHoras = tempoPorDia / 60;
+    let totalHoras = 0;
+
+    if (dificuldade == "facil") {
+        totalHoras = tempos[0];
+    } else {
+        if (dificuldade == "medio") {
+            totalHoras = tempos[1];
+        } else {
+            totalHoras = tempos[2];
+        }
+    }
+
+    let dias = 0;
+    let horasEstudadas = 0;
+
+    for (let i = 0; i < 1000; i++) { // limite de segurança
+        horasEstudadas = horasEstudadas + tempoEmHoras;
+        dias = dias + 1;
+        if (horasEstudadas >= totalHoras) {
+            i = 1000; // parar o loop
+        }
+    }
+
+    resultado.innerHTML = "<b>Música:</b> " + nome + "<br>" +
+                          "<b>Instrumento:</b> " + instrumento + "<br>" +
+                          "<b>Dificuldade:</b> " + dificuldade + "<br>" +
+                          "<b>Você levará cerca de:</b> " + dias + " dias para aprender.";
+}
+
+    </script>
+    
