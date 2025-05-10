@@ -421,6 +421,87 @@ body.bodyHistoria {
     max-width: 600px;
 }
 
+/* Calculadora */
+.bodyCalculadora {
+    background-color: #E8EDF3;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.container-calculadora {
+    background-color: #4B4B4B;
+    border-radius: 15px;
+    margin: 4% 30%;
+    padding: 4vh 10vh;
+    max-width: 750px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.container-calculadora h1 {
+    text-align: center;
+    font-size: 40px;
+    color: #DAA520;
+    margin-bottom: 4vh;
+}
+
+.texto-calc {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Inputs e selects maiores e mais visíveis */
+.texto-calc input,
+.texto-calc select {
+    text-align: center;
+    font-size: 18px;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: #F9F9F9;
+    color: #000000;
+}
+
+.texto-calc ::placeholder {
+    color: #000000;
+    text-align: center;
+}
+
+/* Ao focar */
+.texto-calc input:focus,
+.texto-calc select:focus {
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0 0 0 2px #DAA520;
+}
+
+/* Botão estilizado */
+.texto-calc button {
+    margin-top: 15px;
+    align-self: center;
+    background-color: #DAA520;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Hover no botão */
+.texto-calc button:hover {
+    background-color: #b8860b;
+}
+
+/* Resultado */
+#div_exibir {
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    color: #000000;
+    font-size: 16px;
+    text-align: left;
+}
 
 
 /* Cadastro */

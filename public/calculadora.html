@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculadora</title>
     <link rel="shortcut icon" href="assets/icon/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="bodyHistoria">
+<body class="bodyCalculadora">
     <div class="main-container">
         <header>
             <nav class="navbar">
@@ -24,30 +24,36 @@
                 </ul>
             </nav>
         </header>
-        Insira o nome da Música que você está aprendendo:
-        <input type="text" id="input_nome">
-        <br><br>
-        Insira o instrumento que você está aprendendo:
-        <select id="select_instrumento">
-            <option value="violao">Violão</option>
-            <option value="viola-classica">Viola Clássica</option>
-            <option value="violino">Violino</option>
-            <option value="viola-caipira">Viola Caipira</option>
-        </select>
-        <br><br>
-        Insira o seu nível de dificuldade
-        <select id="select_dificuldade">
-            <option value="facil">Fácil</option>
-            <option value="medio">Médio</option>
-            <option value="dificil">Difícil</option>
-        </select>
-        <br><br>
-        Insira o tempo que você tem disponível por dia em minutos
-        <input type="text" id="input_tempo">
-        <br><br>
-        <button onclick="calcular()">Calcular Tempo</button>
-        <br><br>
-        <div id="div_exibir"></div>
+
+        <div class="container-calculadora">
+            <h1>Calculadora Músical</h1>
+
+            <div class="texto-calc">
+                <input type="text" id="input_nome" placeholder="Insira o nome da Música que você está aprendendo:">
+                <select id="select_instrumento">
+                    <option value="#" selected o>Qual instrumento você está aprendendo?</option>
+                    <option value="Violão">Violão</option>
+                    <option value="Viola Clássica">Viola Clássica</option>
+                    <option value="Violino">Violino</option>
+                    <option value="Viola Caipira">Viola Caipira</option>
+                </select>
+
+                <select id="select_dificuldade">
+                    <option value="#">Insira o seu nível de dificuldade</option>
+                    <option value="Fácil">Fácil</option>
+                    <option value="Médio">Médio</option>
+                    <option value="Difícil">Difícil</option>
+                </select>
+
+                <input type="text" id="input_tempo"
+                    placeholder="Insira o tempo que você tem disponível por dia em minutos">
+                <button onclick="calcular()">Calcular Tempo</button>
+                <div id="div_exibir"></div>
+            </div>
+
+        </div>
+
+
         <footer>
             <div class="footer-content">
                 <img src="assets/icon/logo_sem_fundo.png" alt="">
@@ -76,33 +82,39 @@
         var totalHoras = 0;
         var dias = 0;
 
-        if (tempoEmHoras <= 0) {
-            mensagem = `Por favor, insira um tempo diário válido maior que zero.`;
+        if (dificuldade == "#" || instrumento == "#" || tempoPorDia == 0 || nome == "") {
+            alert("Insira um valor válido")
+            div_exibir.innerHTML = ``;
         } else {
-            if (dificuldade == "facil") {
-                totalHoras = tempos[0];
-            } else if (dificuldade == "medio") {
-                totalHoras = tempos[1];
+            if (tempoEmHoras <= 0) {
+                mensagem = `Por favor, insira um tempo diário válido maior que zero.`;
             } else {
-                totalHoras = tempos[2];
-            }
+                if (dificuldade == "Fácil") {
+                    totalHoras = tempos[0];
+                } else if (dificuldade == "Médio") {
+                    totalHoras = tempos[1];
+                } else {
+                    totalHoras = tempos[2];
+                }
 
-            dias = totalHoras / tempoEmHoras;
+                dias = totalHoras / tempoEmHoras;
 
-            if (tempoEmHoras < 60) {
-                mensagem = `Se você estudar ${tempoPorDia} minutos por dia, você aprenderá a música "${nome}" em aproximadamente ${dias} dias.`;
-            } else {
-                mensagem = `Se você estudar ${tempoEmHoras.toFixed(0)} minutos por dia, você aprenderá a música "${nome}" em aproximadamente ${dias} dias.`;
-            }
-
-            
-        }
-
-        div_exibir.innerHTML = `
+                if (tempoEmHoras < 60) {
+                    mensagem = `Se você estudar ${tempoPorDia} minutos por dia, você aprenderá a música "${nome}" em aproximadamente ${dias} dias.`;
+                } else {
+                    mensagem = `Se você estudar ${tempoEmHoras.toFixed(0)} minutos por dia, você aprenderá a música "${nome}" em aproximadamente ${dias} dias.`;
+                }
+                div_exibir.innerHTML = `
             <b>Música:</b> ${nome}<br>
             <b>Instrumento:</b> ${instrumento}<br>
             <b>Dificuldade:</b> ${dificuldade}<br><br>
             <b>Resultado:</b> ${mensagem}
         `;
+
+            }
+
+        }
+
+
     }
 </script>
