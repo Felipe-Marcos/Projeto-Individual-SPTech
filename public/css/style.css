@@ -54,29 +54,34 @@
     transition: 0.3s;
 }
 
-/* primeiro container */
 .recepcao {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-bottom: 7rem;
+    padding: 4rem 2rem;
+    border-radius: 15px;
+    margin: 0 ;
 }
 
 .recepcao h1 {
     color: #DAA520;
     font-size: 3rem;
     text-align: center;
-    margin-top: 6rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    font-family: 'Arial', sans-serif; /* Adicionando uma fonte mais moderna */
 }
 
 .recepcao label {
     color: #420909;
     font-size: 1.3rem;
-    text-align: center;
-    line-height: 2rem;
-    max-width: 700px;
+    text-align: justify;
+    line-height: 2rem; 
+    max-width: 950px;
+    margin-top: 0;
+    margin-bottom: 3rem;
+    font-family: 'Verdana', sans-serif;
 }
 
 /* segundo container */
@@ -163,24 +168,27 @@
     margin-top: 1rem;
 }
 
-/* quarto container */
+/* Container principal */
 .container-ajudou {
     display: flex;
     flex-direction: column;
     background-color: #4B4B4B;
-    margin-bottom: 6rem;
-    margin: 3rem;
-
+    margin: 3rem auto; /* Centraliza com margens iguais em cima e embaixo */
+    padding: 3rem; /* Padding melhor ajustado */
+    border-radius: 10px;
+    max-width: 90%; /* Garante que o container não ultrapasse 90% da largura da tela */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombras para destaque */
 }
 
+/* Título (h2) */
 .container-ajudou h2 {
     font-size: 3rem;
     text-align: center;
     color: #DAA520;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
+    margin: 2rem 0; /* Margens ajustadas em cima e embaixo */
 }
 
+/* Label dentro do container */
 .container-ajudou label {
     color: #ffffff;
     font-size: 1.3rem;
@@ -190,11 +198,14 @@
     margin-bottom: 2rem;
 }
 
+/* Seção de ajuda (ajudou) */
 .ajudou {
     display: flex;
-    /* justify-content: space-between; */
-    gap: 10rem;
-    padding: 5rem;
+    justify-content: space-between; /* Organiza os itens */
+    gap: 12rem; /* Reduzido o gap para uma distribuição mais harmônica */
+    padding: 3rem 0; /* Padding ajustado */
+    flex-wrap: wrap; /* Permite que os itens se ajustem em telas pequenas */
+    justify-content: center; /* Centraliza os itens na tela */
 }
 /* quinto container */
 .container-instrumentos{
@@ -257,23 +268,35 @@
   #slide3:checked ~ .slides {
     transform: translateX(-200%);
   }
-  
-  .navigation {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
+  #slide4:checked ~ .slides {
+    transform: translateX(-300%);
+  }
+  #slide5:checked ~ .slides {
+    transform: translateX(-400%);
   }
   
+  .navigation {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    gap: 10px;
+  }
+
   .navigation label {
-    width: 12px;
-    height: 12px;
-    background: #DAA520;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
-    display: inline-block;
+    background-color: #fff;
+    opacity: 0.5;
     cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .navigation label:hover {
+    opacity: 1;
+    background-color: #DAA520;
   }
   
 /* Sexto container */
@@ -353,9 +376,12 @@ body.bodyHistoria {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin: 100px 0 0 400px;
-    max-width: 1000px;    
     align-items: center;
+
+    margin: 6.5rem auto 0 auto; /* Centraliza horizontalmente */
+    max-width: 63.5rem;
+    width: 90%; /* Ocupa até 90% da tela em dispositivos menores */
+    
     padding: 2rem;
     background-color: #4B4B4B;
     border-radius: 10px;
@@ -383,7 +409,6 @@ body.bodyHistoria {
     background-color: #DAA520;
     color: white;
     border: none;       
-    transition: background-color 0.3s;
 }
 
 .historia-section button:hover {
@@ -393,7 +418,7 @@ body.bodyHistoria {
 #div_historia img {
     max-width: 100%;
     height: auto;
-     margin-top: 10px;
+    margin-top: 10px;
     margin-bottom: 20px;
 }
 
@@ -418,7 +443,7 @@ body.bodyHistoria {
     text-align: justify;
     color: #ffffff;
     text-align: center;
-    max-width: 600px;
+    max-width: 37.5rem;
 }
 
 /* Calculadora */
