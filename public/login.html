@@ -37,11 +37,15 @@
     var email = input_email.value
     var senha = input_senha.value
 
-    if (email != "felipe@gmail.com" && senha != "12345678") {
-      alert("email e senha inválios")
+    if (email.length > 100) {
+      alert(`O campo "email" excede o número de caracteres`)
+    } else if (!email.includes("@")) {
+      alert(`O email deve conter "@"!`)
+    } else if (senha.length < 8) {
+      alert(`O campo "senha" deve conter no mínimo 8 caracteres`)
     } else {
       window.location.href = "index.html";
     }
-    
+
   }
 </script>
