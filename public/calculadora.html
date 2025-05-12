@@ -100,9 +100,9 @@
                 dias = totalHoras / tempoEmHoras;
 
                 if (tempoEmHoras < 60) {
-                    mensagem = `Se você estudar ${tempoPorDia} minutos por dia, você aprenderá a música "${nome}" em aproximadamente ${dias} dias.`;
+                    mensagem = `Se você estudar ${tempoPorDia} minutos por dia, você aprenderá a música "${nome}" em aproximadamente ${dias.toFixed(0)} dias.`;
                 } else {
-                    mensagem = `Se você estudar ${tempoEmHoras.toFixed(0)} minutos por dia, você aprenderá a música "${nome}" em aproximadamente ${dias} dias.`;
+                    mensagem = `Se você estudar ${tempoEmHoras.toFixed(0)} minutos por dia, você aprenderá a música "${nome}" em aproximadamente ${dias.toFixed(0)} dias.`;
                 }
                 div_exibir.innerHTML = `
             <b>Música:</b> ${nome}<br>
