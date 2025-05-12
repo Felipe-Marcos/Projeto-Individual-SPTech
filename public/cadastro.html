@@ -39,3 +39,37 @@
 </body>
 
 </html>
+
+<script>
+   var i = 3
+  function cadastrar() {
+    var nome = input_nome.value
+    var email = input_email.value
+    var senha = input_senha.value
+    var senhaConfirmada = input_confirmarSenha.value
+   
+
+    if (nome == "" || email == "" || senha == "" || senhaConfirmada == "") {
+      alert("Não deixe nenhum campo vazio!")
+      input_nome.value = "";
+      input_email.value = "";
+      input_senha.value = "";
+      input_confirmarSenha.value = "";
+    } else {
+      
+      if (nome.length > 255) {
+        alert(`O campo "nome" excede o número de caracteres`)
+      } else if (email.length > 100) {
+        alert (`O campo "email" excede o número de caracteres`)
+      } else if (!email.includes("@")) {
+        alert (`O email deve conter "@"!`)
+      } else if (senha.length < 8 ) {
+        alert (`O campo "senha" deve conter no mínimo 8 caracteres`)
+      } else if (senha != senhaConfirmada) {
+          alert(`As senhas não são equivalentes!`)
+      } else  {
+            window.location.href = "login.html";
+      }
+    }
+  }
+</script>
