@@ -1,51 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="assets/icon/favicon.png" type="image/x-icon" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <title>Login</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="assets/icon/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Login</title>
+  </head>
 
-<body class="bodyLogin">
-  <div class="containerLogin">
-    <h1>Login</h1>
-    <div class="input-root-container">
-      <div class="input-container">
-        <i class="fas fa-envelope" id="icon"></i>
-        <input type="email" id="input_email" placeholder="Email" />
+  <body class="bodyLogin">
+    <div class="containerLogin">
+      <h1>Login</h1>
+      <div class="input-root-container">
+        <div class="input-container">
+          <i class="fas fa-envelope" id="icon"></i>
+          <input type="email" id="input_email" placeholder="Email" />
+        </div>
+        <div class="input-container">
+          <i class="fas fa-lock" id="icon"></i>
+          <input type="password" id="input_senha" placeholder="Senha" />
+        </div>
       </div>
-      <div class="input-container">
-        <i class="fas fa-lock" id="icon"></i>
-        <input type="password" id="input_senha" placeholder="Senha" />
+      <div class="logar">
+        <button onclick="logar()">Logar</button>
       </div>
+      <div class="linkConta">Não tem uma conta? <a href="cadastro.html"> Cadastre-se </a></div>
     </div>
-    <div class="logar">
-      <button onclick="logar()">Logar</button>
-    </div>
-    <div class="linkConta">Não tem uma conta? <a href="cadastro.html"> Cadastre-se </a></div>
-  </div>
-</body>
+  </body>
 
-</html>
+  </html>
 
-<script>
-  function logar() {
-    var email = input_email.value
-    var senha = input_senha.value
+  <script>
+    function logar() {
+      var email = input_email.value
+      var senha = input_senha.value
 
-    if (email.length > 100) {
-      alert(`O campo "email" excede o número de caracteres`)
-    } else if (!email.includes("@")) {
-      alert(`O email deve conter "@"!`)
-    } else if (senha.length < 8) {
-      alert(`O campo "senha" deve conter no mínimo 8 caracteres`)
-    } else {
-      window.location.href = "index.html";
+      if (email.length > 100) {
+        alert(`O campo "email" excede o número de caracteres`)
+      } else if (!email.includes("@")) {
+        alert(`O email deve conter "@"!`)
+      } else if (senha.length < 8) {
+        alert(`O campo "senha" deve conter no mínimo 8 caracteres`)
+      } else {
+        window.location.href = "index.html";
+      }
+
     }
-
-  }
-</script>
+  </script>
