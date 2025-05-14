@@ -41,35 +41,55 @@
 </html>
 
 <script>
-   var i = 3
   function cadastrar() {
-    var nome = input_nome.value
-    var email = input_email.value
-    var senha = input_senha.value
-    var senhaConfirmada = input_confirmarSenha.value
-   
+    var nome = input_nome.value;
+    var email = input_email.value;
+    var senha = input_senha.value;
+    var senhaConfirmada = input_confirmarSenha.value;
 
     if (nome == "" || email == "" || senha == "" || senhaConfirmada == "") {
-      alert("Não deixe nenhum campo vazio!")
-      input_nome.value = "";
-      input_email.value = "";
-      input_senha.value = "";
-      input_confirmarSenha.value = "";
-    } else {
-      
-      if (nome.length > 255) {
-        alert(`O campo "nome" excede o número de caracteres`)
-      } else if (email.length > 100) {
-        alert (`O campo "email" excede o número de caracteres`)
-      } else if (!email.includes("@")) {
-        alert (`O email deve conter "@"!`)
-      } else if (senha.length < 8 ) {
-        alert (`O campo "senha" deve conter no mínimo 8 caracteres`)
-      } else if (senha != senhaConfirmada) {
-          alert(`As senhas não são equivalentes!`)
-      } else  {
-            window.location.href = "login.html";
-      }
+      alert("Não deixe nenhum campo vazio!");
+      return;
     }
+
+    if (nome.length > 255) {
+      alert(`O campo "nome" excede o número de caracteres`);
+      return;
+    } else if (email.length > 100) {
+      alert(`O campo "email" excede o número de caracteres`);
+      return;
+    } else if (!email.includes("@")) {
+      alert(`O email deve conter "@"!`);
+      return;
+    } else if (senha.length < 8) {
+      alert(`O campo "senha" deve conter no mínimo 8 caracteres`);
+      return;
+    } else if (senha != senhaConfirmada) {
+      alert(`As senhas não são equivalentes!`);
+      return;
+    }
+
+    // Se passou em todas as validações, enviar para o backend
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ nome, email, senha })
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Erro ao cadastrar");
+        }
+        return response.json();
+      })
+      .then(data => {
+        alert("Cadastro realizado com sucesso!");
+        window.location.href = "login.html";
+      })
+      .catch(error => {
+        console.error("Erro ao cadastrar:", error);
+        alert("Erro no cadastro. Verifique se o email já foi usado ou tente novamente.");
+      });
   }
 </script>

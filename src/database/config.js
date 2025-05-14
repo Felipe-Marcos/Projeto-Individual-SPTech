@@ -4,8 +4,8 @@ var mysql = require("mysql2");
 var mySqlConfig = {
     host: "localhost",
     database: "projeto_individual",
-    user: "root",
-    password: "My$QL_2024#Strong!",
+    user: "FeMusic",
+    password: "Tico-2009",
     port: 3306
 };
 
@@ -35,4 +35,4 @@ function executar(instrucao) {
 
 module.exports = {
     executar
-};
+}; 

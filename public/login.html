@@ -32,20 +32,65 @@
 
   </html>
 
-  <script>
+<script>
+
+
     function logar() {
-      var email = input_email.value
-      var senha = input_senha.value
+        var email = input_email.value;
+        var senha = input_senha.value;
 
-      if (email.length > 100) {
-        alert(`O campo "email" excede o número de caracteres`)
-      } else if (!email.includes("@")) {
-        alert(`O email deve conter "@"!`)
-      } else if (senha.length < 8) {
-        alert(`O campo "senha" deve conter no mínimo 8 caracteres`)
-      } else {
-        window.location.href = "index.html";
-      }
+        if (email == "" || senha == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            return false;
+        } 
+        console.log("FORM LOGIN: ", email);
+        console.log("FORM SENHA: ", senha);
 
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                senha: senha
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "index.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
     }
-  </script>
+    
+
+</script>
