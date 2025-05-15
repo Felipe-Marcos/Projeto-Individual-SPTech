@@ -40,6 +40,7 @@
     var senha = input_senha.value;
 
     if (email == "" || senha == "") {
+      alert(`Preencha todos os campos!`);
       cardErro.style.display = "block"
       mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
       return false;
