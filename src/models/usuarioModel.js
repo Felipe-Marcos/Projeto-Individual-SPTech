@@ -23,7 +23,18 @@ function cadastrar(nome, email, senha) {
     return database.executar(instrucaoSql);
 }
 
+function validar (email) {
+    console.log(`Validando se o usuário com o email ${email} existe`);
+
+    var instrucaoSql = `
+        SELECT COUNT (email) FROM usuario WHERE email = "${email}";
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    validar
 };

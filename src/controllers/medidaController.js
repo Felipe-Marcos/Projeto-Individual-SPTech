@@ -41,6 +41,16 @@ function buscarMedidasEmTempoReal(req, res) {
     });
 }
 
+function alterarStatus(req, res) {
+    
+    var idTarefa = req.params.idTarefa;
+
+    console.log("Alterando Status")
+
+    
+
+}
+
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal

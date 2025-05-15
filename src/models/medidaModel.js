@@ -29,6 +29,14 @@ function buscarMedidasEmTempoReal(idAquario) {
     return database.executar(instrucaoSql);
 }
 
+function alterarStatusDeTarefa(idTarefa) {
+    
+    var instrucaoSql = `
+        
+    `
+
+}
+
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoReal

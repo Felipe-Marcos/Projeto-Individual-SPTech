@@ -531,7 +531,7 @@ body.bodyHistoria {
 
 /* Cadastro */
 .bodyCadastro {
-    background-image: url(/public/assets/imgs/1\ de\ mai.\ de\ 2025\,\ 14_21_07\ 1.svg);
+    background-image: url(../assets/imgs/bg_login.svg);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -650,7 +650,7 @@ body.bodyHistoria {
 /* Login */
 
 .bodyLogin {
-    background-image: url(/public/assets/imgs/1\ de\ mai.\ de\ 2025\,\ 14_21_07\ 1.svg);
+    background-image: url(../assets/imgs/bg_login.svg);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
