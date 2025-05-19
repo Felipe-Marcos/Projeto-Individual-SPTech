@@ -29,7 +29,7 @@ CREATE TABLE infoTabela (
     fkEstado INT,
     fkUsuario INT,
     nomeMusica VARCHAR(100),
-    dtTabela DATE,
+    dtTabela DATE DEFAULT (CURDATE()),
     FOREIGN KEY (fkTarefa) REFERENCES tarefa(idTarefa),
     FOREIGN KEY (fkEstado) REFERENCES estado(idEstado),
     FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)

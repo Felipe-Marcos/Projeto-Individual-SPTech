@@ -28,11 +28,20 @@ tipoEstado VARCHAR (25),
 constraint fkTipoEstado check(tipoEstado in ("Quero Aprender", "Aprendendo", "Aprendi"))
 );
 
-create table infoTabela (
-fkTarefa INT, 
-fkEstado INT,
-fkUsuario INT,
-nomeMusica VARCHAR (100),
-dtTabela DATE
+CREATE TABLE infoTabela (
+  idInfo INT PRIMARY KEY AUTO_INCREMENT,
+  fkTarefa INT,
+  fkEstado INT,
+  fkUsuario INT,
+  nomeMusica VARCHAR(100),
+  dtTabela DATE DEFAULT (CURDATE()),
+  CONSTRAINT fk_info_tarefa FOREIGN KEY (fkTarefa) REFERENCES tarefa(idTarefa),
+  CONSTRAINT fk_info_estado FOREIGN KEY (fkEstado) REFERENCES estado(idEstado),
+  CONSTRAINT fk_info_usuario FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
+
+INSERT INTO estado (tipoEstado) VALUES
+('Quero Aprender'),
+('Aprendendo'),
+('Aprendi');
 
