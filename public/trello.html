@@ -112,7 +112,22 @@
               botaoExcluir.className = 'botao-excluir';
 
               botaoExcluir.onclick = function () {
-                novaTarefa.remove();        // remove a tarefa do DOM
+                fetch (`/tarefas/remover-tarefa/${tarefa.fkTarefa}`, {
+                  method: "DELETE",
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                })
+                .then(resposta => {
+                  if (resposta.ok) {
+                    console.log("Tarefa excluída com sucesso!");
+                    alert("Tarefa excluída com sucesso!");
+                    window.location.reload()
+                  } else {
+                    console.error("Erro ao excluir tarefa.");
+                  }
+                })
+                // novaTarefa.remove();        // remove a tarefa do DOM
                 atualizarProgresso();       // atualiza a barra de progresso
               };
 
@@ -186,26 +201,24 @@
       const coluna = evento.target.closest('.lista-tarefas');      
       
       if (coluna && tarefa) {
-        fetch("/tarefas/atualizar-tarefa",{
-          method: "POST",
+        fetch("/tarefas/mover-tarefa",{
+          method: "PUT",
           headers: {
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
             fkTarefa: Number(tarefa.id.split("_")[1]),
             fkEstado: Number(coluna.id),
-            fkUsuario: Number(sessionStorage.getItem("ID_USUARIO")),
-            nomeMusica: tarefa.textContent.replace("✖", "").trim()
           })
         }).then(resposta => {
           if (resposta.ok) {
             console.log("Tarefa atualizada com sucesso!");
             coluna.appendChild(tarefa);
+            atualizarProgresso();
           } else {
             console.error("Erro ao atualizar tarefa.");
           }
         })  
-        atualizarProgresso();
       }
     }
 
@@ -213,7 +226,7 @@
     // Atualiza a barra de progresso com base nas tarefas concluídas
     function atualizarProgresso() {
       var totalTarefas = document.querySelectorAll('.tarefa').length;
-      var tarefasConcluidas = document.querySelectorAll('#coluna_concluido .tarefa').length;
+      var tarefasConcluidas = document.getElementById('3').querySelectorAll('.tarefa').length;
       var porcentagem = totalTarefas > 0 ? (tarefasConcluidas / totalTarefas) * 100 : 0;
 
       // Atualiza a barra e o texto

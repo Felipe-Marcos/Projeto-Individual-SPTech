@@ -27,9 +27,25 @@ function atualizarTarefa(fkTarefa, fkEstado, fkUsuario, nomeMusica) {
     return database.executar(instrucaoSql);
 }
 
+function moverTarefa(fkTarefa, fkEstado) {
+    var instrucaoSql = `
+        UPDATE infoTabela SET fkEstado = ${fkEstado}, dtTabela = curdate() WHERE fkTarefa = ${fkTarefa};
+    `;
+    return database.executar(instrucaoSql);
+}
+
+function removerTarefa(fkTarefa) {
+    var instrucaoSql = `
+        DELETE FROM infoTabela WHERE fkTarefa = ${fkTarefa};
+    `;
+    return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
     adicionarTarefa,
     listarTarefas,
-    atualizarTarefa
+    atualizarTarefa,
+    moverTarefa,
+    removerTarefa
 };

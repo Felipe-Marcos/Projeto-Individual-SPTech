@@ -11,12 +11,16 @@ router.get("/listar-tarefas/:fkUsuario", function(req, res) {
     tarefaController.listarTarefas(req, res);
 });
 
-router.post("/mover-tarefa", function(req, res) {
+router.put("/mover-tarefa", function(req, res) {
     tarefaController.moverTarefa(req, res);
 });
 
 router.post("/atualizar-tarefa", function(req,res) {
     tarefaController.atualizarTarefa(req, res);
 })
+
+router.delete("/remover-tarefa/:fkTarefa", function(req, res) {
+    tarefaController.removerTarefa(req, res);
+});
 
 module.exports = router;
