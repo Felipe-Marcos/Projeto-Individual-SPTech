@@ -1,123 +1,123 @@
-  <!DOCTYPE html>
-  <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <title>Quadro de Tarefas</title>
-    <link rel="shortcut icon" href="assets/icon/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="css/trello.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <title>Quadro de Tarefas</title>
+  <link rel="shortcut icon" href="assets/icon/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/trello.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
 
-  <body>
+<body>
 
-    <body class="bodyHome" onload="listarTarefas()">
-      <header>
-        <nav class="navbar">
-          <img src="assets/icon/logo_sem_fundo.png" alt="Logo" class="logo" />
-          <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="metas.html">Metas</a></li>
-            <li><a href="historia.html">História</a></li>
-            <li><a href="calculadora.html">Calculadora</a></li>
-            <li><a href="login.html"><i class="fa-solid fa-circle-user"></i></a></li>
-          </ul>
-        </nav>
-      </header>
+  <body class="bodyHome" onload="listarTarefas()">
+    <header>
+      <nav class="navbar">
+        <img src="assets/icon/logo_sem_fundo.png" alt="Logo" class="logo" />
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="metas.html">Metas</a></li>
+          <li><a href="historia.html">História</a></li>
+          <li><a href="calculadora.html">Calculadora</a></li>
+          <li><a href="login.html"><i class="fa-solid fa-circle-user"></i></a></li>
+        </ul>
+      </nav>
+    </header>
 
-      <h1 id="title-tarefa">Quadro de Tarefas</h1>
+    <h1 id="title-tarefa">Quadro de Tarefas</h1>
 
-      <div class="area-adicionar-tarefa">
-        <input type="text" id="campo_tarefa" placeholder="Digite a tarefa...">
-        <button onclick="adicionarTarefa()">Adicionar</button>
+    <div class="area-adicionar-tarefa">
+      <input type="text" id="campo_tarefa" placeholder="Digite a tarefa...">
+      <button onclick="adicionarTarefa()">Adicionar</button>
+    </div>
+
+    <!-- Colunas do quadro estilo Kanban -->
+    <div class="quadro">
+
+      <!-- Coluna 1: A Fazer -->
+      <div class="coluna" ondragover="permitirSoltar(event)" ondrop="soltarTarefa(event)">
+        <h2>O que quero aprender</h2>
+        <div id="1" class="lista-tarefas"></div>
       </div>
 
-      <!-- Colunas do quadro estilo Kanban -->
-      <div class="quadro">
+      <!-- Coluna 2: Em Andamento -->
+      <div class="coluna" ondragover="permitirSoltar(event)" ondrop="soltarTarefa(event)">
+        <h2>Estou aprendendo</h2>
+        <div id="2" class="lista-tarefas"></div>
+      </div>
 
-        <!-- Coluna 1: A Fazer -->
-        <div class="coluna" ondragover="permitirSoltar(event)" ondrop="soltarTarefa(event)">
-          <h2>O que quero aprender</h2>
-          <div id="1" class="lista-tarefas"></div>
-        </div>
+      <!-- Coluna 3: Concluído -->
+      <div class="coluna" ondragover="permitirSoltar(event)" ondrop="soltarTarefa(event)">
+        <h2>Aprendi</h2>
+        <div id="3" class="lista-tarefas"></div>
+      </div>
 
-        <!-- Coluna 2: Em Andamento -->
-        <div class="coluna" ondragover="permitirSoltar(event)" ondrop="soltarTarefa(event)">
-          <h2>Estou aprendendo</h2>
-          <div id="2" class="lista-tarefas"></div>
-        </div>
+    </div>
 
-        <!-- Coluna 3: Concluído -->
-        <div class="coluna" ondragover="permitirSoltar(event)" ondrop="soltarTarefa(event)">
-          <h2>Aprendi</h2>
-          <div id="3" class="lista-tarefas"></div>
+    <h1 id="progresso">Acompanhe o seu progresso</h1>
+    <!-- Barra de progresso -->
+    <div class="container-progresso">
+      <div id="barra_progresso" class="barra"></div>
+    </div>
+    <p id="texto_progresso" style="text-align: center;">0/0 concluídas</p>
+
+    <!-- Gráfico -->
+    <h1 id="progresso">Progresso nos mêses</h1>
+    <div class="grafico-container">
+      <canvas id="myChart" width="400" height="210"></canvas>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <img src="assets/icon/logo_sem_fundo.png" alt="">
+        <div class="footer-texto">
+          <label> © 2025 FeMusic Todos os direitos reservados.
+            Desenvolvido por Felipe Marcos Bastos Pena</label>
         </div>
 
       </div>
+    </footer>
 
-      <h1 id="progresso">Acompanhe o seu progresso</h1>
-      <!-- Barra de progresso -->
-      <div class="container-progresso">
-        <div id="barra_progresso" class="barra"></div>
-      </div>
-      <p id="texto_progresso" style="text-align: center;">0/0 concluídas</p>
+  </body>
 
-      <!-- Gráfico -->
-      <h1 id="progresso">Progresso nos mêses</h1>
-      <div class="grafico-container">
-        <canvas id="myChart" width="400" height="210"></canvas>
-      </div>
+</html>
 
-      <footer>
-        <div class="footer-content">
-          <img src="assets/icon/logo_sem_fundo.png" alt="">
-          <div class="footer-texto">
-            <label> © 2025 FeMusic Todos os direitos reservados.
-              Desenvolvido por Felipe Marcos Bastos Pena</label>
-          </div>
+<script>
+  // Variável global que armazena a tarefa que está sendo arrastada
+  var tarefaSendoArrastada = null;
 
-        </div>
-      </footer>
+  // Função para listar as tarefas puxando do banco de dados
+  function listarTarefas() {
+    fetch(`/tarefas/listar-tarefas/${sessionStorage.getItem("ID_USUARIO")}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(resposta => {
+      if (resposta.ok) {
+        resposta.json().then(tarefas => {
+          for (let i = 0; i < tarefas.length; i++) {
+            const tarefa = tarefas[i]
+            // Cria uma nova tarefa
+            var novaTarefa = document.createElement('div');
+            novaTarefa.className = 'tarefa';         // classe para estilização
+            novaTarefa.draggable = true;             // torna a tarefa arrastável
+            novaTarefa.textContent = tarefa.nomeMusica;  // define o texto visível
 
-    </body>
+            // Botão para excluir a tarefa
+            var botaoExcluir = document.createElement('button');
+            botaoExcluir.textContent = '✖';
+            botaoExcluir.className = 'botao-excluir';
 
-  </html>
-
-  <script>
-    // Variável global que armazena a tarefa que está sendo arrastada
-    var tarefaSendoArrastada = null;
-
-    // Função para listar as tarefas puxando do banco de dados
-    function listarTarefas() {
-      fetch(`/tarefas/listar-tarefas/${sessionStorage.getItem("ID_USUARIO")}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }).then(resposta => {
-        if (resposta.ok) {
-          resposta.json().then(tarefas => {
-            for (let i = 0; i < tarefas.length; i++) {
-              const tarefa = tarefas[i]
-              // Cria uma nova tarefa
-              var novaTarefa = document.createElement('div');
-              novaTarefa.className = 'tarefa';         // classe para estilização
-              novaTarefa.draggable = true;             // torna a tarefa arrastável
-              novaTarefa.textContent = tarefa.nomeMusica;  // define o texto visível
-
-              // Botão para excluir a tarefa
-              var botaoExcluir = document.createElement('button');
-              botaoExcluir.textContent = '✖';
-              botaoExcluir.className = 'botao-excluir';
-
-              botaoExcluir.onclick = function () {
-                fetch (`/tarefas/remover-tarefa/${tarefa.fkTarefa}`, {
-                  method: "DELETE",
-                  headers: {
-                    "Content-Type": "application/json"
-                  }
-                })
+            botaoExcluir.onclick = function () {
+              fetch(`/tarefas/remover-tarefa/${tarefa.fkTarefa}`, {
+                method: "DELETE",
+                headers: {
+                  "Content-Type": "application/json"
+                }
+              })
                 .then(resposta => {
                   if (resposta.ok) {
                     console.log("Tarefa excluída com sucesso!");
@@ -127,167 +127,221 @@
                     console.error("Erro ao excluir tarefa.");
                   }
                 })
-                // novaTarefa.remove();        // remove a tarefa do DOM
-                atualizarProgresso();       // atualiza a barra de progresso
-              };
+              // novaTarefa.remove();        // remove a tarefa do DOM
+              atualizarProgresso();       // atualiza a barra de progresso
+            };
 
-              novaTarefa.appendChild(botaoExcluir); // insere o botão na tarefa
+            novaTarefa.appendChild(botaoExcluir); // insere o botão na tarefa
 
-              novaTarefa.setAttribute('id', `tarefa_${tarefa.fkTarefa}`);
+            novaTarefa.setAttribute('id', `tarefa_${tarefa.fkTarefa}`);
 
-              novaTarefa.addEventListener('dragstart', function (e) {
-                e.dataTransfer.setData("text/plain", this.id);
-              });
+            novaTarefa.addEventListener('dragstart', function (e) {
+              e.dataTransfer.setData("text/plain", this.id);
+            });
 
 
-              // Adiciona a nova tarefa à coluna "A Fazer"
-              if (tarefa.fkEstado == 1) {
-                document.getElementById('1').appendChild(novaTarefa);
-              } else if (tarefa.fkEstado == 2) {
-                document.getElementById('2').appendChild(novaTarefa);
-              } else if (tarefa.fkEstado == 3) {
-                document.getElementById('3').appendChild(novaTarefa);
-              }
-
-              // Atualiza a barra de progresso
-              atualizarProgresso();
+            // Adiciona a nova tarefa à coluna "A Fazer"
+            if (tarefa.fkEstado == 1) {
+              document.getElementById('1').appendChild(novaTarefa);
+            } else if (tarefa.fkEstado == 2) {
+              document.getElementById('2').appendChild(novaTarefa);
+            } else if (tarefa.fkEstado == 3) {
+              document.getElementById('3').appendChild(novaTarefa);
             }
-          })
-        }
+
+            // Atualiza a barra de progresso
+            atualizarProgresso();
+            buscarGrafico()
+          }
+        })
+      }
+    })
+  }
+
+  // Função para adicionar nova tarefa
+  function adicionarTarefa() {
+    var campoTexto = document.getElementById('campo_tarefa'); // campo de input
+    var textoDigitado = campoTexto.value.trim(); // remove espaços extras
+
+    // Não faz nada se estiver vazio
+    if (textoDigitado === '') return;
+
+    fetch("/tarefas/adicionar-tarefa", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        fkUsuario: sessionStorage.getItem("ID_USUARIO"),
+        nomeMusica: textoDigitado
       })
-    }
+    }).then(resposta => {
+      if (resposta.ok) {
+        // Limpa o campo de texto
+        campoTexto.value = '';
+        console.log("Tarefa adicionada com sucesso!");
+        alert("Tarefa adicionada com sucesso!");
+        window.location.reload()
+      } else {
+        console.error("Erro ao adicionar tarefa.");
+      }
+    })
+  }
 
-    // Função para adicionar nova tarefa
-    function adicionarTarefa() {
-      var campoTexto = document.getElementById('campo_tarefa'); // campo de input
-      var textoDigitado = campoTexto.value.trim(); // remove espaços extras
+  // Permite que um item seja solto dentro de uma coluna
+  function permitirSoltar(evento) {
+    evento.preventDefault();
+  }
 
-      // Não faz nada se estiver vazio
-      if (textoDigitado === '') return;
+  // Quando uma tarefa é solta em uma nova coluna
+  function soltarTarefa(evento) {
+    evento.preventDefault();
 
-      fetch("/tarefas/adicionar-tarefa", {
-        method: "POST",
+    const idTarefa = evento.dataTransfer.getData("text/plain");
+    const tarefa = document.getElementById(idTarefa);
+    const coluna = evento.target.closest('.lista-tarefas');
+
+    if (coluna && tarefa) {
+      fetch("/tarefas/mover-tarefa", {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          fkUsuario: sessionStorage.getItem("ID_USUARIO"),
-          nomeMusica: textoDigitado
+          fkTarefa: Number(tarefa.id.split("_")[1]),
+          fkEstado: Number(coluna.id),
         })
       }).then(resposta => {
         if (resposta.ok) {
-          // Limpa o campo de texto
-          campoTexto.value = '';
-          console.log("Tarefa adicionada com sucesso!");
-          alert("Tarefa adicionada com sucesso!");
+          console.log("Tarefa atualizada com sucesso!");
+          coluna.appendChild(tarefa);
+          atualizarProgresso();
           window.location.reload()
         } else {
-          console.error("Erro ao adicionar tarefa.");
+          console.error("Erro ao atualizar tarefa.");
         }
       })
     }
+  }
 
-    // Permite que um item seja solto dentro de uma coluna
-    function permitirSoltar(evento) {
-      evento.preventDefault();
-    }
 
-    // Quando uma tarefa é solta em uma nova coluna
-    function soltarTarefa(evento) {
-      evento.preventDefault();
+  // Atualiza a barra de progresso com base nas tarefas concluídas
+  function atualizarProgresso() {
+    var totalTarefas = document.querySelectorAll('.tarefa').length;
+    var tarefasConcluidas = document.getElementById('3').querySelectorAll('.tarefa').length;
+    var porcentagem = totalTarefas > 0 ? (tarefasConcluidas / totalTarefas) * 100 : 0;
 
-      const idTarefa = evento.dataTransfer.getData("text/plain");
-      const tarefa = document.getElementById(idTarefa);
-      const coluna = evento.target.closest('.lista-tarefas');      
-      
-      if (coluna && tarefa) {
-        fetch("/tarefas/mover-tarefa",{
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            fkTarefa: Number(tarefa.id.split("_")[1]),
-            fkEstado: Number(coluna.id),
-          })
-        }).then(resposta => {
-          if (resposta.ok) {
-            console.log("Tarefa atualizada com sucesso!");
-            coluna.appendChild(tarefa);
-            atualizarProgresso();
-          } else {
-            console.error("Erro ao atualizar tarefa.");
-          }
-        })  
+    // Atualiza a barra e o texto
+    document.getElementById('barra_progresso').style.width = porcentagem + '%';
+    document.getElementById('texto_progresso').textContent = `${tarefasConcluidas}/${totalTarefas} concluídas`;
+  }
+
+  // Gráfico
+
+  function buscarGrafico() {
+    fetch(`/dash/exibir-andamento-mensal/${sessionStorage.getItem("ID_USUARIO")}/3`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
       }
-    }
+    }).then(resposta => {
+      if (resposta.ok) {
+        resposta.json().then(resposta => {
+          var progresso = []
+          var meses = []
 
-
-    // Atualiza a barra de progresso com base nas tarefas concluídas
-    function atualizarProgresso() {
-      var totalTarefas = document.querySelectorAll('.tarefa').length;
-      var tarefasConcluidas = document.getElementById('3').querySelectorAll('.tarefa').length;
-      var porcentagem = totalTarefas > 0 ? (tarefasConcluidas / totalTarefas) * 100 : 0;
-
-      // Atualiza a barra e o texto
-      document.getElementById('barra_progresso').style.width = porcentagem + '%';
-      document.getElementById('texto_progresso').textContent = `${tarefasConcluidas}/${totalTarefas} concluídas`;
-    }
-
-    // Gráfico
-    const ctx = document.getElementById('myChart');
-
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: [
-          'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-          'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-        ],
-        datasets: [{
-          label: 'Músicas aprendidas',
-          data: [2, 4, 3, 5, 6, 4, 3, 2, 5, 6, 9.5, 4],
-          backgroundColor: '#DAA520',  // Dourado
-          borderColor: '#000',
-          borderWidth: 2
-        }]
-      },
-      options: {
-        plugins: {
-          legend: {
-            labels: {
-              color: 'white', // Cor da legenda
-              font: {
-                size: 15
-              }
-            }
+          for (let i = 0; i < resposta.length; i++) {
+            progresso.push(resposta[i]['COUNT(fkTarefa)']);
           }
-        },
-        scales: {
-          x: {
-            ticks: {
-              color: 'white', // cor dos meses
-              font: {
-                size: 15
-              }
-            },
-            grid: {
-              color: 'white' // linhas de grade leves
+
+          for (let i = 0; i < resposta.length; i++) {
+            var mes = new Date(resposta[i].dtTabela).getMonth() + 1; // Adiciona 1 porque os meses começam do zero
+
+            if (mes == 1) {
+              mes = "Janeiro"
+            } else if (mes == 2) {
+              mes = "Fevereiro"
+            } else if (mes == 3) {
+              mes = "Março"
+            } else if (mes == 4) {
+              mes = "Abril"
+            } else if (mes == 5) {
+              mes = "Maio"
+            } else if (mes == 6) {
+              mes = "Junho"
+            } else if (mes == 7) {
+              mes = "Julho"
+            } else if (mes == 8) {
+              mes = "Agosto"
+            } else if (mes == 9) {
+              mes = "Setembro"
+            } else if (mes == 10) {
+              mes = "Outubro"
+            } else if (mes == 11) {
+              mes = "Novembro"
+            } else if (mes == 12) {
+              mes = "Dezembro"
             }
-          },
-          y: {
-            beginAtZero: true,
-            ticks: {
-              color: 'white', // cor dos números laterais
-              font: {
-                size: 15
-              }
-            },
-            grid: {
-              color: 'white'
-            }
+
+            meses.push(mes)
           }
-        }
+
+          const ctx = document.getElementById('myChart');
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: meses,
+              datasets: [{
+                label: 'Músicas aprendidas',
+                data: progresso,
+                backgroundColor: '#DAA520',  // Dourado
+                borderColor: '#000',
+                borderWidth: 2
+              }]
+            },
+            options: {
+              plugins: {
+                legend: {
+                  labels: {
+                    color: 'white', // Cor da legenda
+                    font: {
+                      size: 15
+                    }
+                  }
+                }
+              },
+              scales: {
+                x: {
+                  ticks: {
+                    color: 'white', // cor dos meses
+                    font: {
+                      size: 15
+                    }
+                  },
+                  grid: {
+                    color: 'white' // linhas de grade leves
+                  }
+                },
+                y: {
+                  beginAtZero: true,
+                  ticks: {
+                    color: 'white', // cor dos números laterais
+                    font: {
+                      size: 15
+                    }
+                  },
+                  grid: {
+                    color: 'white'
+                  }
+                }
+              }
+            }
+          });
+        })
       }
-    });
-  </script>
+    })
+  }
+
+
+
+</script>
