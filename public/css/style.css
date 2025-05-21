@@ -168,46 +168,8 @@
     margin-top: 1rem;
 }
 
-/* Container principal */
-.container-ajudou {
-    display: flex;
-    flex-direction: column;
-    background-color: #4B4B4B;
-    margin: 3rem auto; /* Centraliza com margens iguais em cima e embaixo */
-    padding: 3rem; /* Padding melhor ajustado */
-    border-radius: 10px;
-    max-width: 90%; /* Garante que o container não ultrapasse 90% da largura da tela */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombras para destaque */
-}
 
-/* Título (h2) */
-.container-ajudou h2 {
-    font-size: 3rem;
-    text-align: center;
-    color: #DAA520;
-    margin: 2rem 0; /* Margens ajustadas em cima e embaixo */
-}
-
-/* Label dentro do container */
-.container-ajudou label {
-    color: #ffffff;
-    font-size: 1.3rem;
-    text-align: center;
-    line-height: 2rem;
-    max-width: 600px;
-    margin-bottom: 2rem;
-}
-
-/* Seção de ajuda (ajudou) */
-.ajudou {
-    display: flex;
-    justify-content: space-between; /* Organiza os itens */
-    gap: 12rem; /* Reduzido o gap para uma distribuição mais harmônica */
-    padding: 3rem 0; /* Padding ajustado */
-    flex-wrap: wrap; /* Permite que os itens se ajustem em telas pequenas */
-    justify-content: center; /* Centraliza os itens na tela */
-}
-/* quinto container */
+/* quarto container */
 .container-instrumentos{
     background-color: #4B4B4B;
     display: flex;
