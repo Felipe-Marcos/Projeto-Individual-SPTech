@@ -1,6 +1,5 @@
 # A linha abaixo determina que o diretório node_modules não será enviado ao repositório remoto
 node_modules
 package-lock.json
-.env.dev
 .github
-C:\Users\Marquinhos\Desktop\sptech\2025\1°Semestre\Sprint3\pi\Projeto-Individual-SPTech\src\database\config.js
+
