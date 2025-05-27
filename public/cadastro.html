@@ -34,7 +34,7 @@
     <div class="cadastrar">
       <button onclick="cadastrar()">Cadastrar</button>
     </div>
-    <div class="linkConta">Já tem uma conta? <a href="login.html"> Entrar </a></div>
+    <div class="linkConta">Já tem uma conta? <a href="index.html"> Entrar </a></div>
   </div>
 </body>
 
@@ -85,7 +85,7 @@
       })
       .then(data => {
         alert("Cadastro realizado com sucesso!");
-        window.location.href = "login.html";
+        window.location.href = "index.html";
       })
       .catch(error => {
         alert("Erro no cadastro. Verifique se o email já foi usado ou tente novamente.");
