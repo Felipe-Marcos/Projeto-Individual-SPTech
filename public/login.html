@@ -28,6 +28,10 @@
     </div>
     <div class="linkConta">Não tem uma conta? <a href="cadastro.html"> Cadastre-se </a></div>
   </div>
+
+  <div id="loading">
+    <img src="assets/guitar.gif" alt="Carregando..." />
+  </div>
 </body>
 
 </html>
@@ -45,6 +49,9 @@
       mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
       return false;
     }
+
+    document.getElementById("loading").style.display = "block";
+
     console.log("FORM LOGIN: ", email);
     console.log("FORM SENHA: ", senha);
 
@@ -75,7 +82,7 @@
 
       } else {
         alert(`Usuário não encontrado!`)
-
+         document.getElementById("loading").style.display = "none";
         console.log("Houve um erro ao tentar realizar o login!");
 
         resposta.text().then(texto => {
@@ -84,6 +91,7 @@
         })
       }
     }).catch(erro => {
+       document.getElementById("loading").style.display = "none";
       console.log(erro);
     })
 

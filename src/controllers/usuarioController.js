@@ -74,7 +74,7 @@ function cadastrar(req, res) {
         usuarioModel.validar(email)
             .then(
                 function (resultado) {
-                    var usuarioExiste = resultado[0]['COUNT (email)']
+                    var usuarioExiste = resultado[0]['COUNT(email)']
                     
                     if (usuarioExiste > 0) {
                         res.status(409).send("Usuário já existe").json("Usuário já existe")
