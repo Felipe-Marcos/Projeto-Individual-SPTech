@@ -11,9 +11,9 @@ use projeto_individual;
 
 create table usuario (
 idUsuario INT PRIMARY KEY auto_increment,
-nome VARCHAR(250),
-email VARCHAR (100),
-senha VARCHAR (100)
+nome VARCHAR(250) NOT NULL,
+email VARCHAR (100) NOT NULL,
+senha VARCHAR (100) NOT NULL
 );
 
 create table tarefa(
