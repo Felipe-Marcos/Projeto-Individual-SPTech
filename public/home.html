@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="assets/icon/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>Home</title>
 </head>
 
 <body class="bodyHome">
@@ -55,12 +55,14 @@
         <div class="minha-historia">
             <h2>Minha História</h2>
             <label>
-                Olá, meu nome é Felipe Marcos, sou um estudante do curso de ADS na SpTech e alguém que carrega uma verdadeira paixão pela
+                Olá, meu nome é Felipe Marcos, sou um estudante do curso de ADS na SpTech e alguém que carrega uma
+                verdadeira paixão pela
                 música.<br> Meu primeiro contato com esse universo foi ainda criança, aos 8 anos, quando comecei a tocar
                 violino. Embora tenha sido importante para o meu começo na música, confesso que nunca cheguei a me
                 aprofundar de fato nesse instrumento.
                 <br><br>
-                Com o tempo, fui conhecendo outros Instrumentos, que me abriram diversas portas e foi aí que a conexão verdadeira
+                Com o tempo, fui conhecendo outros Instrumentos, que me abriram diversas portas e foi aí que a conexão
+                verdadeira
                 aconteceu. Descobri que, mais do que uma atividade ou um hobby, a música era uma forma de me expressar
                 quando eu não conseguia colocar em palavras o meu sentimento.
                 <br><br>
@@ -180,11 +182,13 @@
 </html>
 
 <script>
-    let index = 1;
+    var indice = 1;
 
     setInterval(() => {
-        index++;
-        if (index > 5) index = 1;
-        document.getElementById("slide" + index).checked = true;
-    }, 3000); // troca a cada 3 segundos
+        indice++;
+        if (indice > 5) {
+            indice = 1;
+        }
+        document.getElementById("slide" + indice).checked = true;
+    }, 3000);
 </script>
