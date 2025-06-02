@@ -27,7 +27,7 @@ function validar (email) {
     console.log(`Validando se o usuário com o email ${email} existe`);
 
     var instrucaoSql = `
-        SELECT COUNT (email) FROM usuario WHERE email = "${email}";
+        SELECT COUNT(email) FROM usuario WHERE email = "${email}";
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
