@@ -45,15 +45,11 @@
 
     if (email == "" || senha == "") {
       alert(`Preencha todos os campos!`);
-      cardErro.style.display = "block"
-      mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
       return false;
     }
 
     document.getElementById("loading").style.display = "block";
 
-    console.log("FORM LOGIN: ", email);
-    console.log("FORM SENHA: ", senha);
 
     fetch("/usuarios/autenticar", {
       method: "POST",

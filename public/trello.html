@@ -85,7 +85,6 @@
 </html>
 
 <script>
-  // var tarefaSendoArrastada = null;
 
   // Função para listar as tarefas puxando do banco de dados
   function listarTarefas() {
@@ -159,7 +158,7 @@
   // Função para adicionar nova tarefa
   function adicionarTarefa() {
     var campoTexto = document.getElementById('campo_tarefa'); // campo de input
-    var textoDigitado = campoTexto.value.trim(); // remove espaços extras
+    var textoDigitado = campoTexto.value; 
 
     // Não faz nada se estiver vazio
     if (textoDigitado === '') return;
@@ -227,7 +226,7 @@
   function atualizarProgresso() {
     var totalTarefas = document.querySelectorAll('.tarefa').length;
     var tarefasConcluidas = document.getElementById('3').querySelectorAll('.tarefa').length;
-    var porcentagem = totalTarefas > 0 ? (tarefasConcluidas / totalTarefas) * 100 : 0;
+    var porcentagem = totalTarefas > 0 ? (tarefasConcluidas / totalTarefas) * 100 : 0; // Ternário
 
     // Atualiza a barra e o texto
     document.getElementById('barra_progresso').style.width = porcentagem + '%';
